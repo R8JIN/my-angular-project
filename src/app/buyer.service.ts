@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Buyer } from './buyer';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,11 @@ export class BuyerService {
     console.log(`Buyers: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`);
     console.log("String data: ", JSON.stringify(body) )
     return this.http.post(this.apiUrl, JSON.stringify(body), { headers });
+  }
+
+  async getBuyerByHousingLocation(id: number): Promise<Buyer[]> {
+    const data = await fetch(`${this.apiUrl}/${id}`);
+    return (await data.json()) ?? [];
   }
 
 }
