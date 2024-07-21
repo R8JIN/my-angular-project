@@ -1,4 +1,4 @@
-
+import {RouterModule} from '@angular/router';
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HousingLocationComponent} from '../housing-location/housing-location.component';
@@ -8,13 +8,14 @@ import { HousingService } from '../housing.service';
 @Component({
   selector: 'app-house',
   standalone: true,
-  imports: [CommonModule, HousingLocationComponent],
+  imports: [CommonModule, HousingLocationComponent, RouterModule],
   template: `
       <section>
         <form>
         <input type="text" placeholder="Filter by city" #filter />
           <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
         </form>
+        <a [routerLink]="['/new-form']" class="no-underline"><b>Add New House</b></a>
       </section>
     <section class="results">
       <app-housing-location *ngFor="let housingLocation of filteredLocationList" [housingLocation]="housingLocation"></app-housing-location>

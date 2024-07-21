@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {HouseComponent} from './house/house.component';
 import {DetailsComponent} from './details/details.component';
+import { NewHouseComponent } from './new-house/new-house.component';
 
 const routeConfig: Routes = [
   {
@@ -13,5 +14,10 @@ const routeConfig: Routes = [
     component: DetailsComponent,
     title: 'Home details',
   },
+  {
+    path:'new-form',
+    component: NewHouseComponent,
+    title: 'new house',
+  }
 ];
 export default routeConfig;

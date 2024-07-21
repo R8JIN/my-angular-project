@@ -7,6 +7,14 @@
   justify-content: space-around;
 }
 
+.no-underline {
+  text-decoration: none;
+  
+  b {
+    color: inherit; 
+  }
+}
+
 input[type="text"] {
   border: solid 1px var(--primary-color);
   padding: 10px;

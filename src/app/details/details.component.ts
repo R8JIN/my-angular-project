@@ -7,11 +7,13 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BuyerService } from '../buyer.service';
 import { Subscription } from 'rxjs';
+import { Buyer } from '../buyer';
+import { ApplicantsComponent } from '../applicants/applicants.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ApplicantsComponent],
   template: `
     <article>
       <img
@@ -44,6 +46,10 @@ import { Subscription } from 'rxjs';
           <button type="submit"  class="button">Apply now</button>
         </form>
       </section>
+      <section class="listing-features">
+         <h3 class="section-heading" *ngIf="showMessage">Applicants ({{buyerList.length}})</h3>
+        <app-applicants  *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
+      </section>
     </article>
   `,
   styleUrls: ['./details.component.css']
@@ -55,6 +61,13 @@ export class DetailsComponent implements OnInit {
   route = inject(ActivatedRoute);
   housingService = inject(HousingService);
   buyerService = inject(BuyerService);
+  buyerList:Buyer[] = [];
+  showMessage = false;
+
+  toggleMessage() {
+    this.showMessage = !this.showMessage;
+  }
+
   housingLocation: HousingLocation | undefined;
   
   applyForm = new FormGroup({
@@ -72,6 +85,18 @@ export class DetailsComponent implements OnInit {
       .catch((error) => {
         console.error('Error fetching housing location', error);
       });
+    
+  }
+
+  constructor(){
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    this.buyerService.getBuyerByHousingLocation(housingLocationId).then((buyerList: Buyer[]) => {
+      this.buyerList = buyerList;
+      console.log("The applicants are: ", buyerList);
+      if(buyerList.length !=0){
+        this.showMessage = true;
+      }
+    });
   }
 
   submitApplication() {
@@ -86,7 +111,7 @@ export class DetailsComponent implements OnInit {
       ).subscribe(
         response => {
           console.log('Application submitted successfully', response);
-          alert('Application submitted successfully!');
+          alert('Application Submitted Successfully!');
           this.applyForm.reset()
         },
         error => {

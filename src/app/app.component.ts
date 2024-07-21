@@ -11,7 +11,7 @@ import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http';
     <main>
       <a [routerLink]="['/']">
         <header class="brand-name">
-          <img class="brand-logo" src="assets/image/home.svg" alt="logo" aria-hidden="true" />
+          <img class="brand-logo" src="assets/image/home.svg" alt="HOME" aria-hidden="true" />
         </header>
       </a>
       <section class="content">
