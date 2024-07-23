@@ -21,12 +21,12 @@ export class CustomColorDirective {
   }
 
   private highlight(color: string) {
-    document.body.style.backgroundColor = color;
+    this.el.nativeElement.style.backgroundColor = color;
     if(this.customColor=='black'){
-      document.body.style.color = 'white';
+      this.el.nativeElement.style.color = 'white';
     }
     else{
-      document.body.style.color = 'black';
+      this.el.nativeElement.style.color = 'black';
     }
   }
 

@@ -11,7 +11,7 @@ import { CustomDirective } from '../attribute-directives/custom.directive';
   template: `<section class="listing-features">
               <ul>
                 <li appCustom  (mouseover)="sendMessage(buyer.firstName)" >{{ buyer.firstName }} {{ buyer.lastName }}</li>
-               
+              
               </ul>
                 </section>`,
   styleUrls: ['../details/details.component.css']
@@ -22,6 +22,6 @@ export class ApplicantsComponent {
   @Output() message = new EventEmitter<string>();
 
   sendMessage(firstName:String) {
-    this.message.emit('Hovered over the name ' + firstName);
+    this.message.emit(firstName + ' wants to buy this house');
   }
 }

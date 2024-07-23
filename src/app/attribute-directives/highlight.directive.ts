@@ -21,7 +21,7 @@ export class HighlightDirective {
 
   private highlight(color: string){
     this.el.nativeElement.style.backgroundColor = color;
-    this.el.nativeElement.style.borderRadius = '10px';
+    this.el.nativeElement.style.borderRadius = '28px';
 
   }
 }

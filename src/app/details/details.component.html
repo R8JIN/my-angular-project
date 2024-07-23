@@ -1,1 +1,63 @@
-<p>details works!</p>
+<article>
+    <!-- Create a Component For this message -->
+   <div class="d-flex justify-content-center">
+        <div *ngIf="success"
+            class="alert alert-success alert-dismissible fade show 
+                col-xm-3 my-2 " 
+            role="alert"> Application Submitted
+            <button type="button"  (click)="success=false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            </button>
+        </div>
+        <div *ngIf="fail" 
+            class="alert alert-warning alert-dismissible fade show 
+                col-xm-3 my-2" 
+            role="alert"> Application not Submitted
+            <button type="button"  (click)="fail=false" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="px-2">
+      <img
+        class="listing-photo"
+        [src]="housingLocation?.photo"
+        alt="Exterior photo of {{ housingLocation?.name }}"
+        crossorigin
+      />
+      <section class="listing-description">
+        <div class="--bs-primary-text-emphasis">
+          <h1>{{ housingLocation?.name }}</h1>
+        </div>
+        <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
+      </section>
+      <section class="listing-features">
+        <h2 class="section-heading">About this housing location</h2>
+        <ul>
+          <li>Units available: {{ housingLocation?.availableUnits }}</li>
+          <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
+          <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
+        </ul>
+      </section>
+      <section class="listing-apply">
+        <h2 class="section-heading">Apply now to live here</h2>
+        <form [formGroup]="applyForm" (ngSubmit)="submitApplication()">
+          <label for="first-name">First Name</label>
+          <input id="first-name" type="text" formControlName="firstName" />
+          <label for="last-name">Last Name</label>
+          <input id="last-name" type="text" formControlName="lastName" />
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" />
+          <button type="submit"  class="btn btn-primary">Apply now</button>
+        </form>
+      </section>
+      <section class="listing-features">
+        <h3 class="section-heading" *appCustomIf="showMessage">Applicants ({{buyerList.length}})</h3>
+        <p>{{ receivedMessage }}</p>
+        <app-applicants (message)="receiveMessage($event)" *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
+       
+      </section>
+    </div>
+    
+  </article>
