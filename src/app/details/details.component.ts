@@ -9,9 +9,9 @@ import { BuyerService } from '../buyer.service';
 import { Subscription } from 'rxjs';
 import { Buyer } from '../buyer';
 import { ApplicantsComponent } from '../applicants/applicants.component';
-import { HighlightDirective } from '../highlight.directive';
-import { CustomDirective } from '../custom.directive';
+
 import { CustomIfDirective } from '../custom-if.directive';
+import { HighlightDirective } from '../attribute-directives/highlight.directive';
 
 @Component({
   selector: 'app-details',
@@ -20,10 +20,8 @@ import { CustomIfDirective } from '../custom-if.directive';
     FormsModule, ApplicantsComponent, HighlightDirective, CustomIfDirective],
   template: `
     <article>
-      <div>
-        <input type="radio" name="colors" (click)="color='lightgreen'"> Green
-      </div>
-      <p [appHighlight]="color">Highlight</p>
+    <div class="px-2">
+
       <img
         class="listing-photo"
         [src]="housingLocation?.photo"
@@ -31,7 +29,7 @@ import { CustomIfDirective } from '../custom-if.directive';
         crossorigin
       />
       <section class="listing-description">
-        <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
+        <div class="--bs-primary-text-emphasis"><h1>{{ housingLocation?.name }}</h1></div>
         <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
       </section>
       <section class="listing-features">
@@ -51,7 +49,7 @@ import { CustomIfDirective } from '../custom-if.directive';
           <input id="last-name" type="text" formControlName="lastName" />
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email" />
-          <button type="submit"  class="button">Apply now</button>
+          <button type="submit"  class="btn btn-primary">Apply now</button>
         </form>
       </section>
       <section class="listing-features">
@@ -60,6 +58,7 @@ import { CustomIfDirective } from '../custom-if.directive';
         <app-applicants (message)="receiveMessage($event)" *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
         <p>{{ receivedMessage }}</p>
       </section>
+    </div>
     </article>
   `,
   styleUrls: ['./details.component.css']

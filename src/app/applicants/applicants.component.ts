@@ -2,7 +2,8 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { BuyerService } from '../buyer.service';
 import { Buyer } from '../buyer';
 import { CommonModule } from '@angular/common';
-import { CustomDirective } from '../custom.directive';
+import { CustomDirective } from '../attribute-directives/custom.directive';
+
 @Component({
   selector: 'app-applicants',
   standalone: true,

@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import {HousingLocationComponent} from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location/housinglocation';
 import { HousingService } from '../housing.service';
-import { HighlightDirective } from '../highlight.directive';
+import { HighlightDirective } from '../attribute-directives/highlight.directive';
+
 
 @Component({
   selector: 'app-house',
@@ -13,15 +14,28 @@ import { HighlightDirective } from '../highlight.directive';
   template: `
       <section>
         <form>
-        <input type="text" placeholder="Filter by city" #filter />
-          <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+          <div class="input-group mb-3">
+            <input class="form-control" type="text" placeholder="Filter by city"  aria-describedby="button-addon1" #filter />
+            <button class="btn btn-primary" type="button" (click)="filterResults(filter.value)" id="button-addon1">Search</button>
+          </div>
         </form>
-        <a [routerLink]="['/new-form']" class="no-underline"><b>Add New House</b></a>
-        
+        <div class="row">
+          <div class="col-sm-2 m-1">
+              <a [routerLink]="['/new-form']" class="no-underline">
+                <i class="fa-solid fa-plus"> Add New House</i>
+              </a>
+          </div>
+          <div class="col-sm-2 m-1">
+            <a [routerLink]="['/blog']" class="no-underline">
+              <i class="fa-solid fa-blog"> Read Blog</i>
+            </a>
+          </div>
+        </div>
+      
       </section>
     <section class="results">
       <app-housing-location *ngFor="let housingLocation of filteredLocationList"
-       [housingLocation]="housingLocation" [appHighlight]="'orange'"></app-housing-location>
+       [housingLocation]="housingLocation" [appHighlight]="'lightblue'"></app-housing-location>
     </section>
 
 `,

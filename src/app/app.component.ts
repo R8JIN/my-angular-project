@@ -6,14 +6,16 @@ import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HouseComponent,RouterModule, RouterModule,],
+  imports: [HouseComponent,RouterModule,],
   template: `
 
     <main>
       <a [routerLink]="['/']">
         <header class="brand-name">
-          <i class="fa-solid fa-home"> Home </i> 
-        </header>
+          <div class="py-2 px-1">
+            <i class="fa-solid fa-home"> Home </i> 
+          </div>
+          </header>
       </a>
       <section class="content">
         <router-outlet></router-outlet>
