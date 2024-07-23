@@ -15,14 +15,24 @@ export class HousingService {
         return (await data.json()) ?? [];
       }
     
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
     async getHousingLocationById(id: number): Promise<HousingLocation | undefined> {
       const data = await fetch(`${this.url}/${id}`);
       return (await data.json()) ?? {};
     }
+    
+    submitNewHouse(housingLocation: HousingLocation){
 
-   submitApplication(firstName: string, lastName: string, email: string) {
+      const headers = { 'content-type': 'application/json'};
+      const body = JSON.stringify(housingLocation);
+      console.log("The body is: ", body)
+      return this.http.post('http://localhost:8080/locations', body, { 'headers': headers} );
+      
+    }
+    
+
+    submitApplication(firstName: string, lastName: string, email: string) {
       
       const headers = { 'content-type': 'application/json'};
       const body = {'firstName': firstName, 'lastName': lastName, 'email': 'email'};

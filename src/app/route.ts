@@ -17,7 +17,7 @@ const routeConfig: Routes = [
   {
     path:'new-form',
     component: NewHouseComponent,
-    title: 'new house',
+    title: 'New House',
   }
 ];
 export default routeConfig;

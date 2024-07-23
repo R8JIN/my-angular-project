@@ -1,15 +1,16 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { BuyerService } from '../buyer.service';
 import { Buyer } from '../buyer';
 import { CommonModule } from '@angular/common';
-
+import { CustomDirective } from '../custom.directive';
 @Component({
   selector: 'app-applicants',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CustomDirective],
   template: `<section class="listing-features">
               <ul>
-                <li>{{ buyer.firstName }} {{ buyer.lastName }}</li>
+                <li appCustom  (mouseover)="sendMessage(buyer.firstName)" >{{ buyer.firstName }} {{ buyer.lastName }}</li>
+               
               </ul>
                 </section>`,
   styleUrls: ['../details/details.component.css']
@@ -17,4 +18,9 @@ import { CommonModule } from '@angular/common';
 export class ApplicantsComponent {
 
   @Input() buyer!: Buyer;
+  @Output() message = new EventEmitter<string>();
+
+  sendMessage(firstName:String) {
+    this.message.emit('Hovered over the name ' + firstName);
+  }
 }

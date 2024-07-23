@@ -1,4 +1,6 @@
-<form>
+<h2 style="text-align: center;"> Add New House</h2>
+
+<form [formGroup]="applyForm" (ngSubmit)="submitApplication()">
     <div>
       <label for="id">ID</label>
       <input id="id" formControlName="id" type="number" />
