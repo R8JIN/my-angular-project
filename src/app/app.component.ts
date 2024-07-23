@@ -12,7 +12,7 @@ import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http';
     <main>
       <a [routerLink]="['/']">
         <header class="brand-name">
-          <div class="py-2 px-1">
+          <div class="p-1 m-1">
             <i class="fa-solid fa-home"> Home </i> 
           </div>
           </header>
