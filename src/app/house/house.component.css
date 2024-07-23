@@ -14,7 +14,7 @@
     color: inherit; 
   }
 }
-
+/* 
 input[type="text"] {
   border: solid 1px var(--primary-color);
   padding: 10px;
@@ -30,7 +30,7 @@ button {
   background: var(--primary-color);
   color: white;
   border-radius: 8px;
-}
+} */
 
 @media (min-width: 500px) and (max-width: 768px) {
   .results {

@@ -9,7 +9,6 @@ import {RouterModule} from '@angular/router';
   imports: [CommonModule, RouterModule],
   template:
    `<section class="listing">
-
       <img
         class="listing-photo"
         [src]="housingLocation.photo"
