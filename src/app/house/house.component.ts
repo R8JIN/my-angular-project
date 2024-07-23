@@ -1,14 +1,15 @@
 import {RouterModule} from '@angular/router';
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HousingLocationComponent} from '../housing-location/housing-location.component';
 import { HousingLocation } from '../housing-location/housinglocation';
 import { HousingService } from '../housing.service';
+import { HighlightDirective } from '../highlight.directive';
 
 @Component({
   selector: 'app-house',
   standalone: true,
-  imports: [CommonModule, HousingLocationComponent, RouterModule],
+  imports: [CommonModule, HousingLocationComponent, RouterModule, HighlightDirective],
   template: `
       <section>
         <form>
@@ -16,9 +17,11 @@ import { HousingService } from '../housing.service';
           <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
         </form>
         <a [routerLink]="['/new-form']" class="no-underline"><b>Add New House</b></a>
+        
       </section>
     <section class="results">
-      <app-housing-location *ngFor="let housingLocation of filteredLocationList" [housingLocation]="housingLocation"></app-housing-location>
+      <app-housing-location *ngFor="let housingLocation of filteredLocationList"
+       [housingLocation]="housingLocation" [appHighlight]="'orange'"></app-housing-location>
     </section>
 
 `,

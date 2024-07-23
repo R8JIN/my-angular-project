@@ -35,12 +35,18 @@ dependencies:
   '@angular/ssr':
     specifier: ^18.1.1
     version: 18.1.1(@angular/common@18.1.1)(@angular/core@18.1.1)
+  angular-font-awesome:
+    specifier: ^3.1.2
+    version: 3.1.2(@angular/core@18.1.1)(font-awesome@4.7.0)
   angular-icons:
     specifier: ^1.0.11
     version: 1.0.11
   express:
     specifier: ^4.19.2
     version: 4.19.2
+  font-awesome:
+    specifier: ^4.7.0
+    version: 4.7.0
   ionicons:
     specifier: ^7.4.0
     version: 7.4.0
@@ -3324,6 +3330,17 @@ packages:
       require-from-string: 2.0.2
     dev: true
 
+  /angular-font-awesome@3.1.2(@angular/core@18.1.1)(font-awesome@4.7.0):
+    resolution: {integrity: sha512-fgNL2jdhBmapaCS9MrcI33LyoYHH4WL9gIL59y334wBnKDZB6JgDRiImbCoNchEm1wFBbVwr9b7cWuQkV0dwEg==}
+    engines: {node: '>= 6.9.0', npm: '>= 3.0.0'}
+    peerDependencies:
+      '@angular/core': '>=2.0.0 || >=4.0.0 || >=5.0.0'
+      font-awesome: ^4.7.0
+    dependencies:
+      '@angular/core': 18.1.1(rxjs@7.8.1)(zone.js@0.14.8)
+      font-awesome: 4.7.0
+    dev: false
+
   /angular-icons@1.0.11:
     resolution: {integrity: sha512-nZIb5HvitQzvKtFqsnzVkOiaUneTtoAofEBinshPG50Ul5RRb7StaRy5Vrl20hhr4YQnQp16nFoHtzSIKZil9A==}
     dev: false
@@ -4670,6 +4687,11 @@ packages:
     dependencies:
       debug: 4.3.5
     dev: true
+
+  /font-awesome@4.7.0:
+    resolution: {integrity: sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==}
+    engines: {node: '>=0.10.3'}
+    dev: false
 
   /foreground-child@3.2.1:
     resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { HousingLocation } from '../housing-location/housinglocation';
 import { HousingService } from '../housing.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,13 +9,21 @@ import { BuyerService } from '../buyer.service';
 import { Subscription } from 'rxjs';
 import { Buyer } from '../buyer';
 import { ApplicantsComponent } from '../applicants/applicants.component';
+import { HighlightDirective } from '../highlight.directive';
+import { CustomDirective } from '../custom.directive';
+import { CustomIfDirective } from '../custom-if.directive';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ApplicantsComponent],
+  imports: [CommonModule, ReactiveFormsModule, 
+    FormsModule, ApplicantsComponent, HighlightDirective, CustomIfDirective],
   template: `
     <article>
+      <div>
+        <input type="radio" name="colors" (click)="color='lightgreen'"> Green
+      </div>
+      <p [appHighlight]="color">Highlight</p>
       <img
         class="listing-photo"
         [src]="housingLocation?.photo"
@@ -47,8 +55,10 @@ import { ApplicantsComponent } from '../applicants/applicants.component';
         </form>
       </section>
       <section class="listing-features">
-         <h3 class="section-heading" *ngIf="showMessage">Applicants ({{buyerList.length}})</h3>
-        <app-applicants  *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
+        
+        <h3 class="section-heading" *appCustomIf="showMessage">Applicants ({{buyerList.length}})</h3>
+        <app-applicants (message)="receiveMessage($event)" *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
+        <p>{{ receivedMessage }}</p>
       </section>
     </article>
   `,
@@ -58,11 +68,14 @@ import { ApplicantsComponent } from '../applicants/applicants.component';
 
 export class DetailsComponent implements OnInit {
 
+
+
   route = inject(ActivatedRoute);
   housingService = inject(HousingService);
   buyerService = inject(BuyerService);
   buyerList:Buyer[] = [];
   showMessage = false;
+  color = '';
 
   toggleMessage() {
     this.showMessage = !this.showMessage;
@@ -97,6 +110,11 @@ export class DetailsComponent implements OnInit {
         this.showMessage = true;
       }
     });
+  }
+
+  receivedMessage = '';
+  receiveMessage(message: string) {
+    this.receivedMessage = message;
   }
 
   submitApplication() {
