@@ -1,0 +1,20 @@
+
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+      <h2><i class="fa-solid fa-blog"> Read Blog</i></h2>  
+    </div>
+    <hr>
+    <div class="row">
+        <div *ngFor="let blog of blogList; let i = index" class="col-4 mb-3">
+            <div class="card" style="width: 18rem;" [appBlogHighlight]="'lightblue'" >
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Written by {{blog.author}}</h6>
+                    <a [routerLink]="['/read-blog', blog.id]" class="no-underline">Read</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
