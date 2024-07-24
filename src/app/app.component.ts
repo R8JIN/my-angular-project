@@ -1,23 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HouseComponent} from './house/house.component';
 import {RouterModule} from '@angular/router';
 import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http';
+import { AsyncPipe, CommonModule, DatePipe } from '@angular/common';
+import { interval, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HouseComponent,RouterModule,],
+  imports: [HouseComponent,RouterModule, CommonModule,],
   template: `
 
     <main>
-      <a [routerLink]="['/']">
-        <header class="brand-name">
-          <div class="p-1 m-1">
-            <i class="fa-solid fa-home"> Home </i> 
-          </div>
-          </header>
-      </a>
-      <section class="content">
+    <div class="row m-2">
+      <div class="col d-flex justify-content-center">
+        <a [routerLink]="['/']">
+          <header class="brand-name">
+            <div>
+              <h3>
+                <i class="fa-solid fa-home"> Home </i> 
+              </h3>
+            </div>
+            </header>
+        </a>
+      </div> 
+      <hr>
+    </div>
+       <section class="content">
         <router-outlet></router-outlet>
       </section>
     </main>`,
@@ -26,4 +35,5 @@ import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'my-angular-project';
+
 }

@@ -13,29 +13,29 @@ import { HighlightDirective } from '../attribute-directives/highlight.directive'
   imports: [CommonModule, HousingLocationComponent, RouterModule, HighlightDirective],
   template: `
       <section>
-      <div class="row">
-        <div class="col-md-5">
-        <form>
-          <div class="input-group m-1 p-1">
-            <input class="form-control" type="text" placeholder="Filter by city"  aria-describedby="button-addon1" #filter />
-            <button class="btn btn-primary" type="button" (click)="filterResults(filter.value)" id="button-addon1">Search</button>
-          </div>
-        </form>
-        </div>
-      </div>
-
         <div class="row">
-          <div class="col-sm-2 mx-2 my-2">
-              <a [routerLink]="['/new-form']" class="no-underline">
-                <i class="fa-solid fa-plus"> Add New House</i>
-              </a>
-          </div>
-          <div class="col-sm-2 my-2">
-            <a [routerLink]="['/blog']" class="no-underline">
-              <i class="fa-solid fa-blog"> Read Blog</i>
-            </a>
+          <div class="col-md-5">
+          <form>
+            <div class="input-group m-1 p-1">
+              <input class="form-control" type="text" placeholder="Filter by city"  aria-describedby="button-addon1" #filter />
+              <button class="btn btn-primary" type="button" (click)="filterResults(filter.value)" id="button-addon1">Search</button>
+            </div>
+          </form>
           </div>
         </div>
+
+          <div class="row">
+            <div class="col-sm-2 mx-2 my-2">
+                <a [routerLink]="['/new-form']" class="no-underline">
+                  <i class="fa-solid fa-plus"> Add New House</i>
+                </a>
+            </div>
+            <div class="col-sm-2 my-2">
+              <a [routerLink]="['/blog']" class="no-underline">
+                <i class="fa-solid fa-blog"> Read Blog</i>
+              </a>
+            </div>
+          </div>
       
       </section>
     <section class="results">
