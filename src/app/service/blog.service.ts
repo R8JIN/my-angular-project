@@ -26,6 +26,7 @@ export class BlogService {
 
     async getById(id: number): Promise<Blog | undefined>{
       const data = await fetch(`${this.apiUrl}/${id}`);
+      console.log("The data is", data);
       return (await data.json()) ?? {};
 
     }
