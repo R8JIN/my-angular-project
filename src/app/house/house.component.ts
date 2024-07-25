@@ -24,15 +24,20 @@ import { HighlightDirective } from '../attribute-directives/highlight.directive'
           </div>
         </div>
 
-          <div class="row">
-            <div class="col-sm-2 mx-2 my-2">
+          <div class="row m-2">
+            <div class="col-sm-1">
                 <a [routerLink]="['/new-form']" class="no-underline">
                   <i class="fa-solid fa-plus"> Add New House</i>
                 </a>
             </div>
-            <div class="col-sm-2 my-2">
+            <div class="col-sm-1">
               <a [routerLink]="['/blog']" class="no-underline">
                 <i class="fa-solid fa-blog"> Read Blog</i>
+              </a>
+            </div>
+            <div class="col-sm-1">
+              <a [routerLink]="['/write-blog']" class="no-underline">
+                <i class="fa-solid fa-blog"> Write Blog</i>
               </a>
             </div>
           </div>

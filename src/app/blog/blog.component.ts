@@ -3,8 +3,8 @@ import { CustomColorDirective } from '../attribute-directives/custom-color.direc
 import { CustomTextDirective } from '../attribute-directives/blog/custom-text.directive';
 import { Blog } from '../interface/blog';
 import { BlogService } from '../service/blog.service';
-import { Router } from 'express';
-import { ActivatedRoute } from '@angular/router';
+
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -24,6 +24,9 @@ export class BlogComponent {
   blog : Blog | undefined;
   
 
+  constructor(private router:Router){
+    
+  }
   ngOnInit(blog:Blog){
     let blogId =  this.route.snapshot.params['id'];
     console.log("The blog id is ", blogId);
@@ -31,7 +34,15 @@ export class BlogComponent {
       this.blog = blog;
     })
     .catch((error) => {
+
       console.error('Error fetching blog', error);
+      if(error.response.status === 404){
+        console.log('404')
+        this.router.navigate(['/not-found'])
+        
+      }
+      
+
     });
 
   }
