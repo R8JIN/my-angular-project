@@ -5,14 +5,15 @@ import {HousingLocationComponent} from '../housing-location/housing-location.com
 import { HousingLocation } from '../housing-location/housinglocation';
 import { HousingService } from '../housing.service';
 import { HighlightDirective } from '../attribute-directives/highlight.directive';
+import { AdsComponent } from '../ads/ads.component';
 
 
 @Component({
   selector: 'app-house',
   standalone: true,
-  imports: [CommonModule, HousingLocationComponent, RouterModule, HighlightDirective],
+  imports: [CommonModule, HousingLocationComponent, RouterModule, HighlightDirective, AdsComponent],
   template: `
-      <section>
+  <section>
         <div class="row">
           <div class="col-md-5">
           <form>
@@ -25,22 +26,23 @@ import { HighlightDirective } from '../attribute-directives/highlight.directive'
         </div>
 
           <div class="row m-2">
-            <div class="col-sm-1">
+            <div class="col-sm-3">
                 <a [routerLink]="['/new-form']" class="no-underline">
                   <i class="fa-solid fa-plus"> Add New House</i>
                 </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-3">
               <a [routerLink]="['/blog']" class="no-underline">
                 <i class="fa-solid fa-blog"> Read Blog</i>
               </a>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-3">
               <a [routerLink]="['/write-blog']" class="no-underline">
                 <i class="fa-solid fa-blog"> Write Blog</i>
               </a>
             </div>
           </div>
+          <app-ads></app-ads>
       
       </section>
     <section class="results">

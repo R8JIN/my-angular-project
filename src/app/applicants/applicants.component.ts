@@ -11,7 +11,7 @@ import { CustomDirective } from '../attribute-directives/custom.directive';
   template: `<section class="listing-features">
               <ul>
                 <li appCustom  (mouseover)="sendMessage(buyer.firstName)" >{{ buyer.firstName }} {{ buyer.lastName }}</li>
-              
+            
               </ul>
                 </section>`,
   styleUrls: ['../details/details.component.css']
