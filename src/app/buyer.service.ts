@@ -26,4 +26,7 @@ export class BuyerService {
     return (await data.json()) ?? [];
   }
 
+  getBuyers(id:number){
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 }

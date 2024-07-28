@@ -1,25 +1,6 @@
 <article>
     <!-- Create a Component For this message -->
-   <div class="d-flex justify-content-center">
-        <div *ngIf="success"
-            class="alert alert-success alert-dismissible fade show 
-                col-xm-3 my-2 " 
-            role="alert"> Application Submitted
-            <button type="button"  (click)="success=false" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-            </button>
-        </div>
-        <div *ngIf="fail" 
-            class="alert alert-warning alert-dismissible fade show 
-                col-xm-3 my-2" 
-            role="alert"> Application not Submitted
-            <button type="button"  (click)="fail=false" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
-            </button>
-        </div>
-    </div>
-
-    <div class="px-2">
+    <div class="m-2 px-2">
       <img
         class="listing-photo"
         [src]="housingLocation?.photo"
@@ -42,21 +23,61 @@
       </section>
       <section class="listing-apply">
         <h2 class="section-heading">Apply now to live here</h2>
+        
+        <!-- Success and Failure Component -->
+        <!-- <div class="d-flex justify-content-start"> -->
+
+          <app-form-msg [successMessage]="successMessage" [errorMessage]="errorMessage"></app-form-msg>
+          <!-- <div *ngIf="success" class="alert alert-success alert-dismissible fade show col-sm-7" role="alert">
+            <div class="row">
+              <div class="col-11">
+                <b>Application submitted</b>
+              </div>
+              <div class="col-1 d-flex justify-content-end justify-content">
+                <span type="button"  (click)="success=false" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+              </div>
+            </div>   
+          </div>
+
+          <div *ngIf="fail" class="alert alert-danger alert-dismissible fade show col-sm-7" role="alert">
+            <div class="row">
+              <div class="col-11">
+                <b>Fill up the form</b>
+              </div>
+              <div class="col-1 d-flex justify-content-end justify-content">
+                <span type="button"  (click)="fail=false" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+              </div>
+            </div>   
+          </div> -->
+        <!-- </div> -->
+  
         <form [formGroup]="applyForm" (ngSubmit)="submitApplication()">
+
           <label for="first-name">First Name</label>
           <input id="first-name" type="text" formControlName="firstName" />
+
           <label for="last-name">Last Name</label>
           <input id="last-name" type="text" formControlName="lastName" />
+
           <label for="email">Email</label>
           <input id="email" type="email" formControlName="email" />
+
           <button type="submit"  class="btn btn-primary">Apply now</button>
+          <hr>
         </form>
+      
       </section>
+      
       <section class="listing-features">
         <h3 class="section-heading" *appCustomIf="showMessage">Applicants ({{buyerList.length}})</h3>
         <p>{{ receivedMessage }}</p>
         <app-applicants (message)="receiveMessage($event)" *ngFor="let buyer of buyerList" [buyer]="buyer"></app-applicants>
-       
+
+        <!-- <div *ngFor="let o of buyers$ | async">{{ o.firstName }}</div> -->
       </section>
     </div>
     

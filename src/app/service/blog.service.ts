@@ -10,7 +10,7 @@ export class BlogService {
   private apiUrl = "http://localhost:8080/api/v1/blog";
   constructor(private http:HttpClient) { }
 
-  addBlog(title:string, author:string, content:string){
+  addBlog(title:any, author:any, content:any){
     
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { 'title':title, 'author': author, 'content':content};

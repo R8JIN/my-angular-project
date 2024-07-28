@@ -6,6 +6,7 @@ import { BlogService } from '../service/blog.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-blog',
   standalone: true,
@@ -32,6 +33,7 @@ export class BlogComponent {
     console.log("The blog id is ", blogId);
     this.blogService.getById(blogId).then((blog) => {
       this.blog = blog;
+  
     })
     .catch((error) => {
 

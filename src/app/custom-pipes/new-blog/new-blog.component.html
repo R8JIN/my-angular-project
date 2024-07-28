@@ -1,6 +1,22 @@
-<div class="container mt-5">
+<div class="container mt-2">
     <div class="row justify-content-center">
       <div class="col-md-6">
+          <div *ngIf="success"
+          class="alert alert-success alert-dismissible fade show 
+          col-xm-3 my-2 " 
+          role="alert"> {{message}}
+            <button type="button"  (click)="success=false" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            </button>
+          </div>
+          <div *ngIf="error" 
+          class="alert alert-danger alert-dismissible fade show 
+          col-xm-3 my-2" 
+          role="alert"> {{message}}
+            <button (click)="error=false" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            </button>
+          </div>
         <h2 class="text-center">Add a Blog</h2>
         <form [formGroup]="applyForm">
           <div class="form-group">
